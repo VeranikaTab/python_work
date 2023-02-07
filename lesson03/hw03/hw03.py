@@ -33,10 +33,22 @@ slovo = input('Введите слово  ').upper()
 if slovo:
     print(sum([item for i in slovo for item, item_2 in list_dict.items() if i in item_2]))
 
+#--------------------------------
+# В настольной игре Скрабл (Scrabble)
+# каждая буква имеет определенную ценность.
+# В случае с английским алфавитом очки
+# распределяются так:
 
+ang_dict = {"AEIOULNSTRАВЕИНОРСТ": 1, "DGДКЛМПУ": 2,
+            "BCMPБГЁЬЯ": 3, "FHVWYЙЫ": 4, "KЖЗХЦЧ": 5,
+            "JXШЭЮ": 8, "QZФЩЪ": 10}
 
+count = 0
+word = input()
 
+print(sum([i[1] for i in ang_dict.items() for j in word if j.upper() in i[0]]))
 
+#--------------------------------
 # .upper() метод возвращает копию строки, в которой все символы стали в верхнем регистре.
 
 # Возьми item для i в slovo для item, item_2 в list_dict.items(), если i в item_2
