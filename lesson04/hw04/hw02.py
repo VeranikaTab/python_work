@@ -14,22 +14,22 @@
 # 4 -> 1 2 3 4
 # 9
 
-n = []
-for elem in range(int(input('Введите кол-во кустов в круглой грядке  '))):
-    a = int(input('Введите значения числа ягод на i-ом кусте грядки -> '))
-    n.append(a)
-max = 0
-for i in range(1, len(n)):
-    temp_max = n[i]+n[i+1]+n[i-1] if i < len(n)-1 else 0
+# n = []
+# for elem in range(int(input('Введите кол-во кустов в круглой грядке  '))):
+#     a = int(input('Введите значения числа ягод на i-ом кусте грядки -> '))
+#     n.append(a)
+# max = 0
+# for i in range(1, len(n)):
+#     temp_max = n[i]+n[i+1]+n[i-1] if i < len(n)-1 else 0
 
-    if i > len(n):
-       temp_max = n[i]+n[i+1]+n[-1]
-    max = temp_max if temp_max > max else max
+#     if i > len(n):
+#        temp_max = n[i]+n[i+1]+n[-1]
+#     max = temp_max if temp_max > max else max
 
-print(n)
-print(max)
+# print(n)
+# print(max)
 
-#----------------------------------------------- если учитывать крайние значения 0 -1 т.к. кольцо
+# #----------------------------------------------- если учитывать крайние значения 0 -1 т.к. кольцо
 
 n = []
 for elem in range(int(input('Введите кол-во кустов в круглой грядке  '))):
@@ -40,10 +40,12 @@ for i in range(1, len(n)):
 
     if i < len(n)-1:
         temp_max = n[i]+n[i+1]+n[i-1]
-    elif i < len(n)-1:
-        if n[0] >= n[-1] and n[1] >= n[-2]:
+    else:
+        if n[0] >= n[-1] or n[0] <= n[-1] and n[1] >= n[-2]:
             temp_max = n[0]+n[1]+n[-1]
-        else:
+        if n[0] >= n[-1] and n[1] <= n[-2]:
+            temp_max = n[0]+n[-2]+n[-1]
+        if n[0] <= n[-1] and n[1] <= n[-2]:
             temp_max = n[-1]+n[-2]+n[0]
 
     max = temp_max if temp_max > max else max
