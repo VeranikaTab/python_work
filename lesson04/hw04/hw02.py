@@ -14,22 +14,39 @@
 # 4 -> 1 2 3 4
 # 9
 
-# n = []
-# for elem in range(int(input('Введите кол-во кустов в круглой грядке  '))):
-#     a = int(input('Введите значения числа ягод на i-ом кусте грядки -> '))
-#     n.append(a)
-# max = 0
-# for i in range(1, len(n)):
-#     temp_max = n[i]+n[i+1]+n[i-1] if i < len(n)-1 else 0
+s = []
+for elem in range(int(input('Введите кол-во кустов в круглой грядке  '))):
+    a = int(input('Введите значения числа ягод на i-ом кусте грядки -> '))
+    s.append(a)
+max = 0
+for i in range(-1, len(s)-1):
+    temp_max = s[i - 1] + s[i] + s[i + 1]
+    if temp_max > max:
+        max = temp_max
+print(s)
+print(max)
 
-#     if i > len(n):
-#        temp_max = n[i]+n[i+1]+n[-1]
-#     max = temp_max if temp_max > max else max
+#--------------------------------------------------
 
-# print(n)
-# print(max)
+def shift(s, n):
+    n = -n % len(s)
+    return s[n:] + s[:n]
+s = []
+for elem in range(int(input('Введите кол-во кустов в круглой грядке  '))):
+    a = int(input('Введите значения числа ягод на i-ом кусте грядки -> '))
+    s.append(a)
+max = 0
 
-# #----------------------------------------------- если учитывать крайние значения 0 -1 т.к. кольцо
+for i in range(1, len(s)):
+    for i in range(-3, 3):
+        s = shift(s, i)
+        temp_max = s[i-1]+s[i]+s[i+1]
+        if temp_max > max: max = temp_max               
+        else: max       
+print(s)
+print(max)
+
+#---------------------------------------------------
 
 n = []
 for elem in range(int(input('Введите кол-во кустов в круглой грядке  '))):
