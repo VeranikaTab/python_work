@@ -17,3 +17,15 @@ def Stepen(a, n):
     else:
         return Stepen(a, n - 1) * a
 print(Stepen(a, n))
+
+# ---------------------------- 
+
+def pow_num(a, b):
+    if b == 0:
+        return 1
+    if b < 0:
+        return pow_num(a, b + 1) * 1 / a
+    return pow_num(a, b - 1) * a
+
+
+print(pow_num(int(input()), int(input())))
