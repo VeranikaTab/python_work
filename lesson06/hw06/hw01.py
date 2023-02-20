@@ -5,7 +5,14 @@
 # Каждое число вводится с новой строки.
 # Ввод: 7 2 5
 # Вывод: 7 9 11 13 15
+first = int(input())
+sub = int(input())
+count = int(input())
 
+for i in range(count):
+    print(first + i * sub, end=" ")
+
+# ------------------------- 2 вариант я
 
 a1 = int(input("Введите 1-й член арифметической прогрессии a1 -  "))  # 7
 d = int(input("Введите разность d -  "))  # 2
@@ -17,5 +24,3 @@ for i in range(n):
     n -= 1
     result.append(an)
 print(*result)
-
-
