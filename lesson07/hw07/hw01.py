@@ -8,7 +8,7 @@
 # в порядке
 # Ввод: пара-ра-рам рам-пам-папам па-ра-па-дам    Вывод:  Парам пам-пам
 
-list_nums = 'пара-ра-рам рам-пам-папам па-ра-па-дам'.upper().split()
+list_nums = input().upper().split()
 glasn = 'а о у е ё ы й э я и ю'.upper().split()
 
 print("Парам пам-пам" if len({len([i for i in list_nums if i in glasn]) for list_nums in list_nums}) == 1 else "Пам парам")
