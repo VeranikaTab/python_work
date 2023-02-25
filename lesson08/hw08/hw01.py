@@ -110,20 +110,16 @@ def change_record():
 def delete_record():
     print("ALL PHONE BOOK")
     show_all()
-    num_line = int(input("Which line do you want to delete? "))
+    result_str = ""
+    num_line = input("Which line do you want to delete? ")
     with open(file_base, encoding="utf-8") as f:
         lines = f.readlines()
     with open(file_base, 'w', encoding="utf-8") as f:
-        ch_id = 1
         for line in lines:
             if line[0] != num_line:
-                line = line.split()
-                line[0] = str(ch_id)
-                line = " ".join([i for i in line]) + "\n"
-                f.write(line)
-                ch_id += 1
+                result_str += line
+        f.write(result_str)
         print("delete!")
-
 
 def export_file():
     new_file_name = input("Enter the name of creating file: ")
