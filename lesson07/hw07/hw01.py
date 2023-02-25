@@ -12,3 +12,13 @@ list_nums = input().upper().split()
 glasn = 'а о у е ё ы й э я и ю'.upper().split()
 
 print("Парам пам-пам" if len({len([i for i in list_nums if i in glasn]) for list_nums in list_nums}) == 1 else "Пам парам")
+# --------------------------------------------
+alp = "аеёиоуыэюя"
+word_sug = input().split()
+vowel_letters = [word.count(char) for word in word_sug
+                 for char in word if char.lower() in alp]
+
+if len(set(vowel_letters)) == 1:
+    print("Парам пам-пам")
+else:
+    print("Пам парам")

@@ -18,3 +18,13 @@ def print_operation_table(operation, num_rows = int(input()), num_columns= int(i
   for i in range(1, num_rows+1):
     print(*((str(operation(i, k)).center(3) for k in range(1, num_columns+1)))) 
 print_operation_table(lambda x, y: x * y)
+
+# -----------------------------
+
+def print_operation_table(operation, num_rows=6, num_columns=6):
+    for i in range(1, num_rows + 1):
+        for j in range(1, num_columns + 1):
+            print(f"{operation(i, j):4}", end=" ")
+        print()
+
+print_operation_table(lambda x, y: x * y)
