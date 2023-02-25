@@ -9,20 +9,23 @@ from os import path
 
 file_base = "base.txt"
 all_data = []
-id = 1
+id = 0
 
-if not path.exists(file_base):                    
-    with open(file_base, "w", encoding="utf-8") as _: 
+
+if not path.exists(file_base):
+    with open(file_base, "w", encoding="utf-8") as _:
         pass
 
-def read_records():  
-    global all_data, id 
-    with open(file_base) as f:
-        all_data = [i.strip() for i in f] 
+def read_records():  # чтение записи
+    global all_data, id
+
+    with open(file_base, encoding="utf-8") as f:
+        all_data = [i.strip() for i in f]
         if all_data:
             id = int(all_data[-1][0])
+
         return all_data
-      
+ 
 def show_all(): 
     if not all_data:
         print("Empty data")
@@ -31,12 +34,13 @@ def show_all():
 
 def adding ():
     global all_data, id
-    add_id = int(id) + 1
+    add_id = int(id)
     with open(file_base, "a", encoding="utf-8") as f:
         first_name = input("Write first name: ").upper()
         last_name = input("Write last name: ").upper()
         new_phone = input("Write phone number: ")
         f.write(f"{add_id} {first_name} {last_name}  {new_phone}\n")
+        add_id = int(id) + 1
     return print("Added information")
 
 def add_new():
@@ -96,29 +100,30 @@ def change_record():
                 print("Not found!")
     new_string = changing(line_to_change)
 
-    all_data[int(line_to_change) - 1] = new_string
-    with open(file_base, 'w') as f:
+    all_data[int(line_to_change)] = new_string
+    with open(file_base, 'w', encoding="utf-8") as f:
         for i in all_data:
             f.write(i + "\n")
+
     print("change!")
 
 def delete_record():
-    
     print("ALL PHONE BOOK")
     show_all()
-    num_line = int(input("Which line do you want to delete? "))    
-    with open(file_base) as f:
+    num_line = int(input("Which line do you want to delete? "))
+    with open(file_base, encoding="utf-8") as f:
         lines = f.readlines()
-    with open(file_base, 'w') as f:
+    with open(file_base, 'w', encoding="utf-8") as f:
         ch_id = 1
         for line in lines:
-            if line.strip('\n') != lines[num_line - 1].strip('\n'):
-                line= line.split()
+            if line[0] != num_line:
+                line = line.split()
                 line[0] = str(ch_id)
                 line = " ".join([i for i in line]) + "\n"
                 f.write(line)
                 ch_id += 1
         print("delete!")
+
 
 def export_file():
     new_file_name = input("Enter the name of creating file: ")
